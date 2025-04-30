@@ -30,10 +30,10 @@ function toggle(){
         <main>
             <form action= {addIngredient} className="ingredient-form">
                 <input 
-                type="text"
-                placeholder="Salt"
-                aria-label="Add ingredient"
-                name= "ingredient"
+                    type="text"
+                    placeholder="Salt"
+                    aria-label="Add ingredient"
+                    name= "ingredient"
                 />
                 <button>Add Ingredient</button>
             </form>
@@ -58,7 +58,7 @@ function toggle(){
             }
            {
            recipeShown ? <section>
-                <h1>TEST</h1>
+                <h1>AI RECIPE WILL GO HERE!</h1>
             </section>
             : null}
         </main>
