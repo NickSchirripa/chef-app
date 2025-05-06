@@ -1,4 +1,6 @@
 import {useState} from "react"
+import IngredientList from "./Ingredients.jsx"
+import Recipe from "./Recipe.jsx"
 
 export default function Main(){
 
@@ -6,7 +8,6 @@ export default function Main(){
 const [ingredients, setIngrediants] = useState([])
 
 
-const ingredientList = ingredients.map(items=> <li>{items}</li>)
 
 //adds ingredient from input
 function addIngredient(formData){
@@ -39,27 +40,16 @@ function toggle(){
             </form>
            {
             //ternary the using conditional rendering. renders when ingredients are more than 1
-           ingredients.length > 0 ? <section>
-                <h2>Ingredients on hand:</h2>
-                <ul className="ingredientList" aria-live="polite">{ingredientList}</ul>
-                {
-                //nested ternary that renders once ingredients are  more than 4
-                ingredients.length > 4 ? <div className="receipeContainer">
-                    <div>
-                        <h3> Ready for recipe?</h3>
-                        <p>Generate a recipe from your list of ingredients!</p>
-                    </div>
-                    <button onClick={toggle}>Get a recipe</button>
-                </div>
-                : null
-                }
-            </section> 
+           ingredients.length > 0 ? 
+                <IngredientList
+                ingredients= {ingredients}
+                 //below is the simple  function that swaps the boolean, to make the  recipeShown switch, thus launch the Recipe comp
+                toggleRecipe = {toggle}
+                    />
             : null
             }
            {
-           recipeShown ? <section>
-                <h1>AI RECIPE WILL GO HERE!</h1>
-            </section>
+           recipeShown ? <Recipe/>
             : null}
         </main>
     )
